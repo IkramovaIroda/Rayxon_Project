@@ -21,26 +21,26 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @PostMapping("/product/")
+    @PostMapping("/product/create")
     public ResponseEntity<?> create(@RequestBody ProductDTO dto) {
         ProductDTO response = productService.create(dto);
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/product/")
+    @PutMapping("/product/update")
     public ResponseEntity<?> update(@Valid @RequestBody ProductDTO dto) {
         productService.update(dto);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/product/{id}")
+    @GetMapping("/product/getById/{id}")
     public ResponseEntity<?> getById(@PathVariable("id") Integer id) {
         ProductEntity productEntity = productService.findById(id);
         return ResponseEntity.ok(productEntity);
     }
 
 
-    @GetMapping("/product/{name}")
+    @GetMapping("/product/getName/{name}")
     public ResponseEntity<?> getById(@PathVariable("name") String name) {
         List<ProductEntity> productEnntity = productRepository.findByName(name);
         return ResponseEntity.ok(productEnntity);
@@ -54,7 +54,7 @@ public class ProductController {
     }
 
     //Taomlarimiz
-    @GetMapping("/product/")
+    @GetMapping("/product/getAll")
     public ResponseEntity<?> getAll() {
         List<ProductEntity> productEntity = productService.getAll();
         return ResponseEntity.ok(productEntity);
