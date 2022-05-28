@@ -13,7 +13,7 @@ public class ProductTypeController {
     @Autowired
     ProductTypeService productTypeService;
 
-    @PostMapping("/type/")
+    @PostMapping("/type/create")
     public ResponseEntity<?> create(@RequestBody ProductTypeDTO productTypeDTO) {
         ProductTypeDTO productTypeDTO1 = productTypeService.create(productTypeDTO);
         return ResponseEntity.ok().build();
@@ -25,13 +25,13 @@ public class ProductTypeController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/type/{id}/{type}")
+    @PutMapping("/type/update/{id}/{type}")
     public ResponseEntity<?> update(@PathVariable("id") Integer id, @PathVariable("type") String type) {
         productTypeService.update(id, type);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/type/{id}")
+    @GetMapping("/type/getbyId/{id}")
     public ResponseEntity<?> getById(@PathVariable("id") Integer id) {
         ProductTypeEntity productType = productTypeService.getById(id);
         return ResponseEntity.ok(productType);
