@@ -18,20 +18,20 @@ public class CompanyController {
     @Autowired
     CompanyRepository companyRepository;
 
-    @PostMapping("/company/")
+    @PostMapping("/company/create")
     public ResponseEntity<?> create(@RequestBody CompanyDTO dto) {
         CompanyDTO response = companSerice.create(dto);
         return ResponseEntity.ok().build();
     }
 
     //Statistikalar
-    @GetMapping("/company/")
+    @GetMapping("/company/getAll")
     public ResponseEntity<?> getAll() {
         List<CompanyEntity> responce = companyRepository.findAll();
         return ResponseEntity.ok(responce);
     }
 
-    @PutMapping("/company/")
+    @PutMapping("/company/update")
     public ResponseEntity<?> update(@RequestBody CompanyDTO dto, @RequestParam("id") Integer id){
         companSerice.update(dto,id);
         return ResponseEntity.ok().build();

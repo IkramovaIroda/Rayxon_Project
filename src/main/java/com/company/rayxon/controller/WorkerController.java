@@ -23,13 +23,13 @@ public class WorkerController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/worker/{id}")
+    @PutMapping("/worker/update/{id}")
     public ResponseEntity<?> update(@Valid @RequestBody WorkerDTO dto,@PathVariable("id") Integer id) {
         workerService.update(dto,id);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/worker/{id}")
+    @GetMapping("/worker/getById/{id}")
     public ResponseEntity<?> getById(@PathVariable("id") Integer id) {
         WorkerEntity productEntity = workerService.findById(id);
         return ResponseEntity.ok(productEntity);
