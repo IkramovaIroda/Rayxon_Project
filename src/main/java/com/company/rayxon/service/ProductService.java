@@ -116,7 +116,7 @@ public class ProductService {
                 productEntity.setImage(attachment);
             } else {
                 Optional<Attachment> optionalAttachment = attachmentRepository.findById(productEntity.getImage().getId());
-                if (optionalAttachment.isEmpty()) return;
+                if (optionalAttachment!=null) return;
                 Attachment attachment = optionalAttachment.get();
                 attachment.setName(dto.getImage().getOriginalFilename());
                 attachment.setSize(dto.getImage().getSize());
@@ -125,7 +125,7 @@ public class ProductService {
                 Optional<AttachmentContent> optionalAttachmentContent =
                         attachmentContentRepository.findByAttachment_id(save.getId());
                 AttachmentContent attachmentContent;
-                if (optionalAttachmentContent.isEmpty()) {
+                if (optionalAttachmentContent!=null) {
                     attachmentContent = new AttachmentContent();
                 } else {
                     attachmentContent = optionalAttachmentContent.get();
