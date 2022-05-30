@@ -93,8 +93,8 @@ public class ProductService {
         return "Deleted";
     }
 
-    public void update(ProductDTO dto) {
-        ProductEntity productEntity = new ProductEntity();
+    public void update(ProductDTO dto,Integer id) {
+        ProductEntity productEntity = productRepository.getById(id);
         ProductTypeEntity productType = productTypeService.getById(dto.getProductType());
         if (dto.getImage().isEmpty()) {
             productEntity.setImage(null);

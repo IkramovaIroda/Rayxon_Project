@@ -27,9 +27,9 @@ public class ProductController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/product/update")
-    public ResponseEntity<?> update(@Valid @RequestBody ProductDTO dto) {
-        productService.update(dto);
+    @PutMapping("/product/update/{id}")
+    public ResponseEntity<?> update(@Valid @RequestBody ProductDTO dto,@PathVariable("id") Integer id) {
+        productService.update(dto,id);
         return ResponseEntity.ok().build();
     }
 
