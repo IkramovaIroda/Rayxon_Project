@@ -45,7 +45,7 @@ public class ProductController {
         List<ProductEntity> productEnntity = productRepository.findByName(name);
         return ResponseEntity.ok(productEnntity);
     }
-    
+
     @GetMapping("/product/top-product")
     public ResponseEntity<?> getFirst() {
         ProductEntity productEntity = productService.findFirst();
