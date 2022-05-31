@@ -35,6 +35,12 @@ public class WorkerController {
         return ResponseEntity.ok(productEntity);
     }
 
+    @GetMapping("/worker/getAll")
+    public ResponseEntity<?> getById() {
+        WorkerEntity productEntity = workerService.getAll();
+        return ResponseEntity.ok(productEntity);
+    }
+
     @DeleteMapping("/worker/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
         workerService.delete(id);
