@@ -57,7 +57,7 @@ public class ProductController {
     public String getAll() {
 //        List<ProductEntity> productEntity = productService.getAll();
 //        return ResponseEntity.ok(productEntity);
-        return "Rayhon ishladi";
+        return "main.html";
     }
 
 //    @DeleteMapping("/product/delete/{id}")
