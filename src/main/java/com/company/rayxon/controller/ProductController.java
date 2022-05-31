@@ -4,6 +4,7 @@ import com.company.rayxon.dto.ProductDTO;
 import com.company.rayxon.entity.ProductEntity;
 import com.company.rayxon.repository.ProductRepository;
 import com.company.rayxon.service.ProductService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -52,12 +53,12 @@ public class ProductController {
         return ResponseEntity.ok(productEntity);
     }
 
-    //Taomlarimiz
+    @ApiOperation(value = "/product/getAll")
     @GetMapping("/product/getAll")
     public String getAll() {
 //        List<ProductEntity> productEntity = productService.getAll();
 //        return ResponseEntity.ok(productEntity);
-        return "main.html";
+        return "Salam aleykum";
     }
 
     @DeleteMapping("/product/delete/{id}")
