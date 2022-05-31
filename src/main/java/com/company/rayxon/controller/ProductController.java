@@ -21,36 +21,36 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @PostMapping("/product/create")
-    public ResponseEntity<?> create(@RequestBody ProductDTO dto) {
-        ProductDTO response = productService.create(dto);
-        return ResponseEntity.ok().build();
-    }
-
-    @PutMapping("/product/update/{id}")
-    public ResponseEntity<?> update(@Valid @RequestBody ProductDTO dto,@PathVariable("id") Integer id) {
-        productService.update(dto,id);
-        return ResponseEntity.ok().build();
-    }
-
-    @GetMapping("/product/getById/{id}")
-    public ResponseEntity<?> getById(@PathVariable("id") Integer id) {
-        ProductEntity productEntity = productService.findById(id);
-        return ResponseEntity.ok(productEntity);
-    }
-
-
-    @GetMapping("/product/getName/{name}")
-    public ResponseEntity<?> getById(@PathVariable("name") String name) {
-        List<ProductEntity> productEnntity = productRepository.findByName(name);
-        return ResponseEntity.ok(productEnntity);
-    }
-
-    @GetMapping("/product/top-product")
-    public ResponseEntity<?> getFirst() {
-        ProductEntity productEntity = productService.findFirst();
-        return ResponseEntity.ok(productEntity);
-    }
+//    @PostMapping("/product/create")
+//    public ResponseEntity<?> create(@RequestBody ProductDTO dto) {
+//        ProductDTO response = productService.create(dto);
+//        return ResponseEntity.ok().build();
+//    }
+//
+//    @PutMapping("/product/update/{id}")
+//    public ResponseEntity<?> update(@Valid @RequestBody ProductDTO dto,@PathVariable("id") Integer id) {
+//        productService.update(dto,id);
+//        return ResponseEntity.ok().build();
+//    }
+//
+//    @GetMapping("/product/getById/{id}")
+//    public ResponseEntity<?> getById(@PathVariable("id") Integer id) {
+//        ProductEntity productEntity = productService.findById(id);
+//        return ResponseEntity.ok(productEntity);
+//    }
+//
+//
+//    @GetMapping("/product/getName/{name}")
+//    public ResponseEntity<?> getById(@PathVariable("name") String name) {
+//        List<ProductEntity> productEnntity = productRepository.findByName(name);
+//        return ResponseEntity.ok(productEnntity);
+//    }
+//
+//    @GetMapping("/product/top-product")
+//    public ResponseEntity<?> getFirst() {
+//        ProductEntity productEntity = productService.findFirst();
+//        return ResponseEntity.ok(productEntity);
+//    }
 
     //Taomlarimiz
     @GetMapping("/product/getAll")
@@ -60,10 +60,10 @@ public class ProductController {
         return "Rayhon ishladi";
     }
 
-    @DeleteMapping("/product/delete/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
-        productService.delete(id);
-        return ResponseEntity.ok().build();
-    }
+//    @DeleteMapping("/product/delete/{id}")
+//    public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
+//        productService.delete(id);
+//        return ResponseEntity.ok().build();
+//    }
 
 }

@@ -13,27 +13,27 @@ import java.util.List;
 
 @Controller
 public class CompanyController {
-    @Autowired
-    CompanyService companSerice;
-    @Autowired
-    CompanyRepository companyRepository;
-
-    @PostMapping("/company/create")
-    public ResponseEntity<?> create(@RequestBody CompanyDTO dto) {
-        CompanyDTO response = companSerice.create(dto);
-        return ResponseEntity.ok().build();
-    }
-
-    //Statistikalar
-    @GetMapping("/company/getAll")
-    public ResponseEntity<?> getAll() {
-        List<CompanyEntity> responce = companyRepository.findAll();
-        return ResponseEntity.ok(responce);
-    }
-
-    @PutMapping("/company/update")
-    public ResponseEntity<?> update(@RequestBody CompanyDTO dto, @RequestParam("id") Integer id){
-        companSerice.update(dto,id);
-        return ResponseEntity.ok().build();
-    }
+//    @Autowired
+//    CompanyService companSerice;
+//    @Autowired
+//    CompanyRepository companyRepository;
+//
+//    @PostMapping("/company/create")
+//    public ResponseEntity<?> create(@RequestBody CompanyDTO dto) {
+//        CompanyDTO response = companSerice.create(dto);
+//        return ResponseEntity.ok().build();
+//    }
+//
+//    //Statistikalar
+//    @GetMapping("/company/getAll")
+//    public ResponseEntity<?> getAll() {
+//        List<CompanyEntity> responce = companyRepository.findAll();
+//        return ResponseEntity.ok(responce);
+//    }
+//
+//    @PutMapping("/company/update")
+//    public ResponseEntity<?> update(@RequestBody CompanyDTO dto, @RequestParam("id") Integer id){
+//        companSerice.update(dto,id);
+//        return ResponseEntity.ok().build();
+//    }
 }

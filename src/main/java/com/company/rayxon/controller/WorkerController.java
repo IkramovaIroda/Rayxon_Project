@@ -13,31 +13,31 @@ import javax.validation.Valid;
 
 @Controller
 public class WorkerController {
-    @Autowired
-    WorkerService workerService;
-
-
-    @PostMapping("/worker/")
-    public ResponseEntity<?> create(@RequestBody WorkerDTO dto) {
-        WorkerDTO response = workerService.create(dto);
-        return ResponseEntity.ok().build();
-    }
-
-    @PutMapping("/worker/update/{id}")
-    public ResponseEntity<?> update(@Valid @RequestBody WorkerDTO dto,@PathVariable("id") Integer id) {
-        workerService.update(dto,id);
-        return ResponseEntity.ok().build();
-    }
-
-    @GetMapping("/worker/getById/{id}")
-    public ResponseEntity<?> getById(@PathVariable("id") Integer id) {
-        WorkerEntity productEntity = workerService.findById(id);
-        return ResponseEntity.ok(productEntity);
-    }
-
-    @DeleteMapping("/worker/delete/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
-        workerService.delete(id);
-        return ResponseEntity.ok().build();
-    }
+//    @Autowired
+//    WorkerService workerService;
+//
+//
+//    @PostMapping("/worker/")
+//    public ResponseEntity<?> create(@RequestBody WorkerDTO dto) {
+//        WorkerDTO response = workerService.create(dto);
+//        return ResponseEntity.ok().build();
+//    }
+//
+//    @PutMapping("/worker/update/{id}")
+//    public ResponseEntity<?> update(@Valid @RequestBody WorkerDTO dto,@PathVariable("id") Integer id) {
+//        workerService.update(dto,id);
+//        return ResponseEntity.ok().build();
+//    }
+//
+//    @GetMapping("/worker/getById/{id}")
+//    public ResponseEntity<?> getById(@PathVariable("id") Integer id) {
+//        WorkerEntity productEntity = workerService.findById(id);
+//        return ResponseEntity.ok(productEntity);
+//    }
+//
+//    @DeleteMapping("/worker/delete/{id}")
+//    public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
+//        workerService.delete(id);
+//        return ResponseEntity.ok().build();
+//    }
 }
