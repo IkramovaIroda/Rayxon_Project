@@ -57,15 +57,6 @@ public class WorkerService {
         throw new RuntimeException("not found");
     }
 
-    public WorkerEntity getAll() {
-        List<WorkerEntity> optional = workerRepository.findAll();
-        if (optional != null) {
-            for (WorkerEntity productEntity : optional) {
-                return productEntity;
-            }
-        }
-        throw new RuntimeException("not found");
-    }
 
     public WorkerEntity findById(Integer id) {
         Optional<WorkerEntity> optional = workerRepository.findById(id);

@@ -2,6 +2,7 @@ package com.company.rayxon.controller;
 
 import com.company.rayxon.dto.WorkerDTO;
 import com.company.rayxon.entity.WorkerEntity;
+import com.company.rayxon.repository.WorkerRepository;
 import com.company.rayxon.service.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,11 +11,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class WorkerController {
-    @Autowired
+    final
     WorkerService workerService;
+    final
+    WorkerRepository workerRepository;
+
+    public WorkerController(WorkerService workerService, WorkerRepository workerRepository) {
+        this.workerService = workerService;
+        this.workerRepository = workerRepository;
+    }
 
 
     @PostMapping("/worker/")
@@ -37,8 +46,8 @@ public class WorkerController {
 
     @GetMapping("/worker/getAll")
     public ResponseEntity<?> getById() {
-        WorkerEntity productEntity = workerService.getAll();
-        return ResponseEntity.ok(productEntity);
+        List<WorkerEntity> list=workerRepository.findAll();
+        return ResponseEntity.ok(list);
     }
 
     @DeleteMapping("/worker/delete/{id}")
