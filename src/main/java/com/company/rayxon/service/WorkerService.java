@@ -68,8 +68,8 @@ public class WorkerService {
     }
 
     public WorkerEntity findById(Integer id) {
-        WorkerEntity optional = workerRepository.getById(id);
-        if (optional!=null) {
+        Optional<WorkerEntity> optional = workerRepository.findById(id);
+        if (optional.isPresent()) {
             return optional.get();
         }
         throw new RuntimeException("not found");
