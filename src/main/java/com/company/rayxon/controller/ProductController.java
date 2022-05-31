@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@Controller
+@RestController
 public class ProductController {
 
     @Autowired
@@ -54,9 +54,10 @@ public class ProductController {
 
     //Taomlarimiz
     @GetMapping("/product/getAll")
-    public ResponseEntity<?> getAll() {
-        List<ProductEntity> productEntity = productService.getAll();
-        return ResponseEntity.ok(productEntity);
+    public String getAll() {
+//        List<ProductEntity> productEntity = productService.getAll();
+//        return ResponseEntity.ok(productEntity);
+        return "Rayhon ishladi";
     }
 
     @DeleteMapping("/product/delete/{id}")
