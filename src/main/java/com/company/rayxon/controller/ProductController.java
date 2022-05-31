@@ -55,10 +55,10 @@ public class ProductController {
 
     @ApiOperation(value = "/product/getAll")
     @GetMapping("/product/getAll")
-    public String getAll() {
-//        List<ProductEntity> productEntity = productService.getAll();
-//        return ResponseEntity.ok(productEntity);
-        return "Salam aleykum";
+    public ResponseEntity<List<ProductEntity>> getAll() {
+        List<ProductEntity> productEntity = productService.getAll();
+        return ResponseEntity.ok(productEntity);
+//        return ResponseEntity.ok();
     }
 
     @DeleteMapping("/product/delete/{id}")
