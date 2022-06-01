@@ -10,6 +10,7 @@ import com.company.rayxon.repository.AttachmentRepository;
 import com.company.rayxon.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -29,7 +30,7 @@ public class ProductService {
     @Autowired
     ProductTypeService productTypeService;
 
-    public ProductDTO create(ProductDTO dto) {
+    public ProductDTO create(ProductDTO dto, MultipartFile multipartFile) {
         ProductEntity productEntity = new ProductEntity();
         ProductTypeEntity productType = productTypeService.getById(dto.getProductType());
         productEntity.setName(dto.getName());
@@ -38,16 +39,16 @@ public class ProductService {
         productEntity.setDescription(dto.getDescription());
         productEntity.setProductType(productType);
         productEntity.setExpDate(dto.getExp_date());
-        if (dto.getImage() != null) {
+        if (multipartFile != null) {
             Attachment attachment = new Attachment();
-            attachment.setName(dto.getImage().getOriginalFilename());
-            attachment.setSize(dto.getImage().getSize());
-            attachment.setContent_type(dto.getImage().getContentType());
+            attachment.setName(multipartFile.getOriginalFilename());
+            attachment.setSize(multipartFile.getSize());
+            attachment.setContent_type(multipartFile.getContentType());
             Attachment save = attachmentRepository.save(attachment);
             AttachmentContent attachmentContent = new AttachmentContent();
             attachmentContent.setAttachment(save);
             try {
-                attachmentContent.setBytes(dto.getImage().getBytes());
+                attachmentContent.setBytes(multipartFile.getBytes());
             } catch (IOException e) {
                 e.printStackTrace();
             }
