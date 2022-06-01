@@ -29,8 +29,8 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping(value = "/product/create",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<?> create(@RequestBody ProductDTO dto,@RequestParam("file") MultipartFile multipartFile) {
-        ProductDTO response = productService.create(dto,multipartFile);
+    public ResponseEntity<?> create(@RequestBody ProductDTO dto) {
+        ProductDTO response = productService.create(dto);
         return ResponseEntity.ok().build();
     }
 
@@ -40,19 +40,19 @@ public class ProductController {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping (value = "/uploads",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public String fileUpload(@RequestParam("file") MultipartFile multipartFile,@RequestBody ProductDTO dto) throws IOException {
-        ProductDTO response = productService.create(dto,multipartFile);
-        File convert=new File("G:/image/"+multipartFile.getOriginalFilename());
-        convert.createNewFile();
-
-        try(FileOutputStream fout=new FileOutputStream(convert)){
-            fout.write(multipartFile.getBytes());
-        }catch (Exception exception){
-            exception.printStackTrace();
-        }
-        return "File upload";
-    }
+//    @PostMapping (value = "/uploads",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    public String fileUpload(@RequestParam("file") MultipartFile multipartFile,@RequestBody ProductDTO dto) throws IOException {
+//        ProductDTO response = productService.create(dto,multipartFile);
+//        File convert=new File("G:/image/"+multipartFile.getOriginalFilename());
+//        convert.createNewFile();
+//
+//        try(FileOutputStream fout=new FileOutputStream(convert)){
+//            fout.write(multipartFile.getBytes());
+//        }catch (Exception exception){
+//            exception.printStackTrace();
+//        }
+//        return "File upload";
+//    }
 
     @GetMapping("/product/getById/{id}")
     public ResponseEntity<?> getById(@PathVariable("id") Integer id) {
