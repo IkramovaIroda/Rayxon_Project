@@ -28,29 +28,16 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @PostMapping(value = "/product/create",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<?> create(@RequestBody ProductDTO dto,@RequestParam("file") MultipartFile multipartFile) {
-        ProductDTO response = productService.create(dto,multipartFile);
-        return ResponseEntity.ok().build();
-    }
-
     @PutMapping("/product/update/{id}")
     public ResponseEntity<?> update(@Valid @RequestBody ProductDTO dto,@PathVariable("id") Integer id) {
         productService.update(dto,id);
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping (value = "/uploads",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public String fileUpload(@RequestParam("file") MultipartFile multipartFile) throws IOException {
-        File convert=new File("G:/image/"+multipartFile.getOriginalFilename());
-        convert.createNewFile();
-
-        try(FileOutputStream fout=new FileOutputStream(convert)){
-            fout.write(multipartFile.getBytes());
-        }catch (Exception exception){
-            exception.printStackTrace();
-        }
-        return "File upload";
+    @PostMapping (value = "/product/create",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String fileUpload(@RequestBody ProductDTO productDTO,@RequestParam("file") MultipartFile multipartFile) throws IOException {
+        ProductDTO response = productService.create(productDTO,multipartFile);
+        return "Succsesfuly upload";
     }
 
     @GetMapping("/product/getById/{id}")
