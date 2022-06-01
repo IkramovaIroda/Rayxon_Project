@@ -1,17 +1,24 @@
 package com.company.rayxon.controller;
 
 import com.company.rayxon.dto.ProductTypeDTO;
+import com.company.rayxon.entity.ProductEntity;
 import com.company.rayxon.entity.ProductTypeEntity;
+import com.company.rayxon.repository.ProductRepository;
+import com.company.rayxon.repository.ProductTypeRepository;
 import com.company.rayxon.service.ProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class ProductTypeController {
     @Autowired
     ProductTypeService productTypeService;
+    @Autowired
+    ProductTypeRepository productRepository;
 
     @PostMapping("/type/create")
     public ResponseEntity<?> create(@RequestBody ProductTypeDTO productTypeDTO) {
@@ -35,5 +42,11 @@ public class ProductTypeController {
     public ResponseEntity<?> getById(@PathVariable("id") Integer id) {
         ProductTypeEntity productType = productTypeService.getById(id);
         return ResponseEntity.ok(productType);
+    }
+
+    @GetMapping("/type/getAll")
+    public ResponseEntity<?> getAll(){
+        List<ProductTypeEntity> typeEntityList=productRepository.findAll();
+        return ResponseEntity.ok(typeEntityList);
     }
 }
