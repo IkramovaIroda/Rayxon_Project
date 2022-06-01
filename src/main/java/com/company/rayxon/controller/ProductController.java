@@ -22,7 +22,7 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @PostMapping("/product/create")
+    @PostMapping(value = "/product/create",consumes = {"*/*"})
     public ResponseEntity<?> create(@RequestBody ProductDTO dto) {
         ProductDTO response = productService.create(dto);
         return ResponseEntity.ok().build();
