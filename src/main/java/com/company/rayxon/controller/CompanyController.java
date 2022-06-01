@@ -18,7 +18,7 @@ public class CompanyController {
     @Autowired
     CompanyRepository companyRepository;
 
-    @PostMapping("/company/create")
+    @PostMapping(value = "/company/create",consumes = {"*/*"})
     public ResponseEntity<?> create(@RequestBody CompanyDTO dto) {
         CompanyDTO response = companSerice.create(dto);
         return ResponseEntity.ok().build();
