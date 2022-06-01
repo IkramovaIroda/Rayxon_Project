@@ -39,22 +39,22 @@ public class ProductService {
         productEntity.setDescription(dto.getDescription());
         productEntity.setProductType(productType);
         productEntity.setExpDate(dto.getExp_date());
-        if (multipartFile != null) {
-            Attachment attachment = new Attachment();
-            attachment.setName(multipartFile.getOriginalFilename());
-            attachment.setSize(multipartFile.getSize());
-            attachment.setContent_type(multipartFile.getContentType());
-            Attachment save = attachmentRepository.save(attachment);
-            AttachmentContent attachmentContent = new AttachmentContent();
-            attachmentContent.setAttachment(save);
-            try {
-                attachmentContent.setBytes(multipartFile.getBytes());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            attachmentContentRepository.save(attachmentContent);
-            productEntity.setImage(attachment);
-        }
+//        if (multipartFile != null) {
+//            Attachment attachment = new Attachment();
+//            attachment.setName(multipartFile.getOriginalFilename());
+//            attachment.setSize(multipartFile.getSize());
+//            attachment.setContent_type(multipartFile.getContentType());
+//            Attachment save = attachmentRepository.save(attachment);
+//            AttachmentContent attachmentContent = new AttachmentContent();
+//            attachmentContent.setAttachment(save);
+//            try {
+//                attachmentContent.setBytes(multipartFile.getBytes());
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            attachmentContentRepository.save(attachmentContent);
+//            productEntity.setImage(attachment);
+//        }
         productEntity.setProductType(productType);
 
         productRepository.save(productEntity);

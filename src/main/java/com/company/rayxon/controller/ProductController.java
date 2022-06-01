@@ -41,7 +41,8 @@ public class ProductController {
     }
 
     @PostMapping (value = "/uploads",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public String fileUpload(@RequestParam("file") MultipartFile multipartFile) throws IOException {
+    public String fileUpload(@RequestParam("file") MultipartFile multipartFile,@RequestBody ProductDTO dto) throws IOException {
+        ProductDTO response = productService.create(dto,multipartFile);
         File convert=new File("G:/image/"+multipartFile.getOriginalFilename());
         convert.createNewFile();
 
