@@ -22,7 +22,7 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @CrossOrigin(origins = {"http://localhost:8585", "http://localhost:8787"}, maxAge = 4800, allowCredentials = "false")
+    @CrossOrigin(origins = {"http://localhost:8585", "http://localhost:3000"}, maxAge = 4800, allowCredentials = "false")
     @PostMapping(value = "/product/create")
     public ResponseEntity<?> create(@RequestBody ProductDTO dto) {
         ProductDTO response = productService.create(dto);
