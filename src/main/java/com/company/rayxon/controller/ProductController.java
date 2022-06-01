@@ -28,7 +28,7 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @PostMapping(value = "/product/create",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/product/create")
     public ResponseEntity<?> create(@RequestBody ProductDTO dto) {
         ProductDTO response = productService.create(dto);
         return ResponseEntity.ok().build();
